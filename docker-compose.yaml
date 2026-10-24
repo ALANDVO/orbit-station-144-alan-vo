@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: voicestudio-backend
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./voicestudio.db
+      - DEBUG=true
+      - ENVIRONMENT=development
+    volumes:
+      - backend-data:/app/uploads
+      - ./backend:/app
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/api/v1/health/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      - keycloak
+    networks:
+      - voicestudio-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: voicestudio-frontend
+    ports:
+      - "127.0.0.1:5173:80"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    networks:
+      - voicestudio-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0
+    container_name: voicestudio-keycloak
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      - KC_DB=dev-file
+    command: start-dev
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - voicestudio-network
+
+volumes:
+  backend-data:
+  keycloak-data:
+
+networks:
+  voicestudio-network:
+    driver: bridge

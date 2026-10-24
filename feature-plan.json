@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "current_feature": "project-skeleton",
+  "features": [
+    {
+      "id": "project-skeleton",
+      "title": "FastAPI + React project skeleton with Docker Compose",
+      "status": "in_progress",
+      "acceptance": [
+        "Backend FastAPI app runs with SQLite",
+        "Frontend React + TypeScript + Vite builds",
+        "Docker Compose brings up backend, frontend, Keycloak",
+        "Basic health endpoints work",
+        "Preflight script passes"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "voice-cloning",
+      "title": "Voice cloning workflow with local TTS",
+      "status": "planned",
+      "acceptance": [
+        "Upload reference audio and clone voice",
+        "Generate speech from text using cloned voice",
+        "Play/download generated audio"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "video-dubbing",
+      "title": "Video dubbing workflow",
+      "status": "planned",
+      "acceptance": [
+        "Upload video, extract audio",
+        "Transcribe and translate audio",
+        "Generate dubbed audio in target language",
+        "Merge back with video"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "transcription-audiobook",
+      "title": "Transcription and audiobook creation",
+      "status": "planned",
+      "acceptance": [
+        "Upload audio, get transcript with timestamps",
+        "Generate audiobook from text with voice selection",
+        "Export as MP3/M4B with chapters"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "auth-keycloak",
+      "title": "OIDC authentication with Keycloak",
+      "status": "planned",
+      "acceptance": [
+        "Login/logout via Keycloak",
+        "Protected API endpoints",
+        "Role-based access (viewer/operator/admin)"
+      ],
+      "implementation": [],
+      "tests": []
+    }
+  ]
+}

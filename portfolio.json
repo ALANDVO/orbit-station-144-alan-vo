@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "name": "orbit-station-144-alan-vo",
+  "owner": "ALANDVO",
+  "email": "alanvo@gmail.com",
+  "domain": "AI/ML developer tools",
+  "workflows": [
+    "Voice cloning from reference audio",
+    "Video dubbing with translation",
+    "Transcription and audiobook creation"
+  ],
+  "auth": "oidc-keycloak-saml-broker",
+  "llm_providers": [
+    "openai-compatible",
+    "anthropic",
+    "gemini",
+    "ollama"
+  ],
+  "summary": "Work in progress: orbit-station-144-alan-vo",
+  "status": "work-in-progress"
+}
