@@ -10,8 +10,8 @@ export function HealthCheck() {
     try {
       setError(null)
       setLoading(true)
-      const res = await apiClient.get('/health')
-      setHealth(res.data)
+      const res = await apiClient.get<{ status: string; database: string }>('/health')
+      setHealth(res)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to check backend health')
     } finally {

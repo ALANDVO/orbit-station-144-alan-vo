@@ -17,13 +17,13 @@ describe("HealthCheck", () => {
   });
 
   it("renders loading state initially", () => {
-    mockApiClient.get.mockResolvedValueOnce({ data: { status: "ok", database: "connected" } });
+    mockApiClient.get.mockResolvedValueOnce({ status: "ok", database: "connected" });
     render(<HealthCheck />);
     expect(screen.getByText("Checking backend health...")).toBeInTheDocument();
   });
 
   it("displays healthy status when API returns ok", async () => {
-    mockApiClient.get.mockResolvedValueOnce({ data: { status: "ok", database: "connected" } });
+    mockApiClient.get.mockResolvedValueOnce({ status: "ok", database: "connected" });
     render(<HealthCheck />);
 
     await waitFor(() => {
@@ -33,7 +33,7 @@ describe("HealthCheck", () => {
   });
 
   it("displays degraded status when API returns degraded", async () => {
-    mockApiClient.get.mockResolvedValueOnce({ data: { status: "degraded", database: "disconnected" } });
+    mockApiClient.get.mockResolvedValueOnce({ status: "degraded", database: "disconnected" });
     render(<HealthCheck />);
 
     await waitFor(() => {
@@ -63,7 +63,7 @@ describe("HealthCheck", () => {
   it("retries health check when retry button is clicked", async () => {
     mockApiClient.get
       .mockRejectedValueOnce(new Error("Network error"))
-      .mockResolvedValueOnce({ data: { status: "ok", database: "connected" } });
+      .mockResolvedValueOnce({ status: "ok", database: "connected" });
 
     render(<HealthCheck />);
 

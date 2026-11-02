@@ -10,7 +10,7 @@ project-skeleton
 
 ### project-skeleton — FastAPI + React project skeleton with Docker Compose
 
-Status: in_progress
+Status: done
 
 Acceptance:
 - Backend FastAPI app runs with SQLite
@@ -18,6 +18,10 @@ Acceptance:
 - Docker Compose brings up backend, frontend, Keycloak
 - Basic health endpoints work
 - Preflight script passes
+
+Implementation: `backend/app/main.py`, `backend/app/core/config.py`, `backend/app/core/database.py`, `backend/app/core/security.py`, `backend/app/models/base.py`, `backend/app/models/user.py`, `backend/app/services/auth.py`, `backend/app/api/__init__.py`, `backend/app/api/routes/health.py`, `frontend/src/main.tsx`, `frontend/src/App.tsx`, `frontend/src/pages/Dashboard.tsx`, `frontend/src/components/HealthCheck.tsx`, `frontend/src/api/client.ts`, `frontend/index.html`, `frontend/src/vite-env.d.ts`, `compose.yaml`, `backend/Dockerfile`, `frontend/Dockerfile`, `frontend/nginx.conf`
+
+Tests: `backend/tests/test_config.py`, `backend/tests/test_health.py`, `backend/tests/conftest.py`, `frontend/src/api/client.test.ts`, `frontend/src/components/HealthCheck.test.tsx`, `frontend/src/pages/Dashboard.test.tsx`
 
 ### voice-cloning — Voice cloning workflow with local TTS
 
