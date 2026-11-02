@@ -3,6 +3,10 @@
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 
 
+> Checkpoint 1.0.0 — project-skeleton complete. Backend tests: 9/9 ✓ Frontend tests: 15/15 ✓ Build: ✓
+> See PLAN.md and STATUS.md for roadmap and next steps.
+
+
 VoiceStudio is an open-source, fully-local voice AI platform for voice cloning, voice design, video dubbing, dictation, transcription, and audiobook creation. Built as a local-first alternative to cloud-based voice services.
 
 ## Features

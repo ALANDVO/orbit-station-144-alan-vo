@@ -4,17 +4,22 @@ import axios from "axios";
 vi.mock("axios");
 
 describe("apiClient", () => {
-  const mockAxios = vi.mocked(axios);
-  let mockInstance: any;
+  const mockAxios = vi.mocked(axios, { deep: true });
+  let mockInstance: {
+    interceptors: { request: { use: ReturnType<typeof vi.fn> }; response: { use: ReturnType<typeof vi.fn> } };
+    defaults: { baseURL: string; headers: { common: Record<string, string> } };
+    get: ReturnType<typeof vi.fn>;
+    post: ReturnType<typeof vi.fn>;
+  };
 
   beforeEach(() => {
     vi.clearAllMocks();
     localStorage.clear();
-    
+
     mockInstance = {
       interceptors: {
-        request: { use: vi.fn(), handlers: [] },
-        response: { use: vi.fn(), handlers: [] },
+        request: { use: vi.fn() },
+        response: { use: vi.fn() },
       },
       defaults: {
         baseURL: "/api/v1",
@@ -23,8 +28,8 @@ describe("apiClient", () => {
       get: vi.fn(),
       post: vi.fn(),
     };
-    
-    mockAxios.create.mockReturnValue(mockInstance);
+
+    mockAxios.create.mockReturnValue(mockInstance as unknown as ReturnType<typeof axios.create>);
     vi.resetModules();
   });
 
@@ -48,9 +53,9 @@ describe("apiClient", () => {
   it("should have healthCheck method that calls axios get", async () => {
     const { apiClient } = await import("./client");
     mockInstance.get.mockResolvedValue({ data: { status: "ok", database: "connected" } });
-    
+
     const result = await apiClient.healthCheck();
-    
+
     expect(mockInstance.get).toHaveBeenCalledWith("/health");
     expect(result).toEqual({ status: "ok", database: "connected" });
   });
@@ -58,9 +63,9 @@ describe("apiClient", () => {
   it("should have healthCheckDb method that calls axios get", async () => {
     const { apiClient } = await import("./client");
     mockInstance.get.mockResolvedValue({ data: { status: "ok", database: "connected" } });
-    
+
     const result = await apiClient.healthCheckDb();
-    
+
     expect(mockInstance.get).toHaveBeenCalledWith("/health/db");
     expect(result).toEqual({ status: "ok", database: "connected" });
   });
@@ -68,10 +73,11 @@ describe("apiClient", () => {
   it("should call axios post for login", async () => {
     const { apiClient } = await import("./client");
     mockInstance.post.mockResolvedValue({ data: { access_token: "token123", token_type: "bearer" } });
-    
+
     const result = await apiClient.login("user", "pass");
-    
+
     expect(mockInstance.post).toHaveBeenCalled();
     expect(result).toEqual({ access_token: "token123", token_type: "bearer" });
   });
 });
+

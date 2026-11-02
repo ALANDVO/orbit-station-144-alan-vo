@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios'
+import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig, type AxiosRequestConfig } from 'axios'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1'
 
@@ -36,6 +36,15 @@ class ApiClient {
         return Promise.reject(error)
       }
     )
+  }
+  async get<T>(url: string): Promise<T> {
+    const response = await this.client.get<T>(url)
+    return response.data
+  }
+
+  async post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.client.post<T>(url, data, config)
+    return response.data
   }
 
   async healthCheck(): Promise<{ status: string; database: string }> {
