@@ -1,6 +1,6 @@
 """Authentication service."""
 
-from datetime import datetime, timedelta
+from datetime import datetime, UTC, timedelta
 from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -51,13 +51,15 @@ class AuthService:
 
     async def update_last_login(self, user: User) -> None:
         """Update user's last login timestamp."""
-        user.last_login = datetime.utcnow()
-        await self.db.commit()
+        user.last_login = datetime.now(UTC)
 
     def create_access_token(self, user: User, expires_delta: Optional[timedelta] = None) -> str:
         """Create access token for user."""
         return create_access_token(
-            data={"sub": str(user.id), "email": user.email, "role": user.role.value},
+            subject=str(user.id),
+            roles=[user.role.value],
+            email=user.email,
+            name=user.full_name,
             expires_delta=expires_delta,
         )
 
