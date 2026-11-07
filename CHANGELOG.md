@@ -46,3 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - OIDC authentication with Keycloak
 - Full CI/CD pipeline
 
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)

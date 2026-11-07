@@ -60,3 +60,6 @@ Acceptance:
 - Protected API endpoints
 - Role-based access (viewer/operator/admin)
 
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)

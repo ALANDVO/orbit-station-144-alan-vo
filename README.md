@@ -140,3 +140,7 @@ MIT License - Copyright (c) 2024 Alan Vo <alanvo@gmail.com>
 
 - Email: alanvo@gmail.com
 - GitHub: @ALANDVO
+
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)
