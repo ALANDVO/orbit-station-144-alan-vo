@@ -1,9 +1,20 @@
 # Changelog
 
+## 1.2.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.1.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
 
+### Fixed
+- `datetime.utcnow()` deprecation warning in `backend/app/services/auth.py` — now uses `datetime.now(UTC)` (Python 3.12+ compatible)
+- `create_access_token()` call signature mismatch in `backend/app/services/auth.py` — now correctly passes individual parameters matching `security.py` function signature
+
+### Verified
+- All 9 backend tests pass
+- All 15 frontend tests pass
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
