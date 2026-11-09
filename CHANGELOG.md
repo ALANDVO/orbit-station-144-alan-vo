@@ -1,9 +1,19 @@
 # Changelog
 
-## 1.2.0 — work-in-progress checkpoint
+## 1.3.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
 
+## 1.2.0 — work-in-progress checkpoint
+
+Project skeleton verified and functional:
+- Backend tests: 9/9 passed
+- Frontend tests: 15/15 passed
+- Frontend TypeScript build: successful
+- Health endpoints verified: `/api/v1/health/` and `/api/v1/health/db` both return healthy
+- Docker Compose configuration complete (requires Docker daemon)
+
+Known issues: STATUS.md.
 ## 1.1.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
