@@ -18,14 +18,15 @@ export function Dashboard() {
               <p>High-quality text-to-speech with multiple voices</p>
             </div>
             <div className="feature-card">
-              <h3>Model Management</h3>
-              <p>Manage and deploy voice AI models</p>
+              <h3>Voice Cloning</h3>
+              <p>Upload reference audio and generate speech from cloned voice</p>
             </div>
           </div>
         </section>
         <section className="quick-actions">
           <h2>Quick Actions</h2>
           <div className="action-buttons">
+            <button onClick={() => window.location.href='/voice-cloning'}">Voice Cloning</button>
             <button>Check Backend Health</button>
             <button>View API Docs</button>
           </div>

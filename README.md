@@ -1,5 +1,7 @@
 # VoiceStudio — Alan Vo | AI & Machine Learning
 
+Current version: `1.4.0`.
+
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 
 > Checkpoint 1.2.0 — project-skeleton complete. Backend tests: 9/9 ✓ Frontend tests: 15/15 ✓ Build: ✓ Health endpoints verified ✓
