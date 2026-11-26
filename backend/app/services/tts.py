@@ -135,10 +135,14 @@ class TTSService:
         
         return output_path
     
-    def list_available_models(self) -> List[str]:
-        """List available TTS models for voice cloning."""
+    def list_available_models(self) -> List[dict]:
+        """List available TTS models for voice cloning.
+        
+        Returns:
+            List of model info dicts with name and description.
+        """
         return [
-            "tts_models/multilingual/multi-lingual/v2",
-            "tts_models/en/ljspeech/vits", 
-            "tts_models/en/fac01/vits"
+            {"name": "tts_models/multilingual/multi-lingual/v2", "description": "Multilingual V2 model for 646+ languages"},
+            {"name": "tts_models/en/ljspeech/vits", "description": "English LJSpeech VITS model"},
+            {"name": "tts_models/en/fac01/vits", "description": "English FAC01 VITS model"},
         ]
