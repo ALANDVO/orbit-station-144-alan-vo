@@ -69,7 +69,7 @@ async def test_clone_voice_endpoint():
 
 @pytest.mark.asyncio
 async def test_list_models_endpoint():
-    """Test the list models endpoint."""
+    """Test the list models endpoint returns structured model info."""
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.get('/api/v1/voice/cloning/models')
         
@@ -77,3 +77,9 @@ async def test_list_models_endpoint():
         data = response.json()
         assert 'models' in data
         assert len(data['models']) > 0
+        # Verify each model entry has 'name' and 'description' fields
+        for model in data['models']:
+            assert 'name' in model, f"Model missing 'name' field: {model}"
+            assert 'description' in model, f"Model missing 'description' field: {model}"
+            assert len(model['name']) > 0, f"Model name is empty: {model}"
+            assert len(model['description']) > 0, f"Model description is empty: {model}"

@@ -79,4 +79,5 @@ async def list_models() -> dict:
     """List available TTS models for voice cloning."""
     from app.services.tts import TTSService
     tts_service = TTSService()
-    return {"models": tts_service.list_available_models()}
+    models = tts_service.list_available_models()
+    return {"models": models}
